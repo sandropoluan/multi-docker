@@ -6,7 +6,7 @@ before_install:
   - docker build -t sandrobrayen/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run  sandrobrayen/react-test npm run test -- --coverage
+  - docker run -e CI=true sandrobrayen/react-test npm run test -- --coverage
 
 after_success:
   - docker build -t sandrobrayen/multi-client ./client
